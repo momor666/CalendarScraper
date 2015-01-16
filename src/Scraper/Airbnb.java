@@ -102,8 +102,8 @@ public class Airbnb {
 					}			
 					driver.findElement(By.id("view_cal")).click();
 			
-					
-					  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+					driver.findElement(By.id("calendar_grid"));
+					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 					// get HTML content
 					System.out.println(driver.getPageSource());
 //					System.out.println(driver.findElement(By.tagName("body")).getText());
