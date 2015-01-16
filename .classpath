@@ -43,5 +43,6 @@
 	<classpathentry kind="lib" path="libs/phantomjsdriver-1.1.0.jar"/>
 	<classpathentry kind="lib" path="libs/selenium-java-2.44.0.jar"/>
 	<classpathentry kind="lib" path="libs/xercesImpl-2.11.0.jar"/>
+	<classpathentry kind="lib" path="libs/joda-time-2.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
