@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 
+import ConflictChecker.ConflictChecker;
 import Scraper.AirbnbScraper;
 import Scraper.HolidayLettingScraper;
 import Scraper.WimduScraper;
@@ -26,6 +27,10 @@ public class CalendarSync {
 			wimdu.scrape();
 			//scrape holidayletting
 			HolidayLettingScraper holidayletting = new HolidayLettingScraper(config.getPropertyList().get(i));
+			
+			//
+			ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i));
+			conflictchecker.checkConflicts();
 		}
 	}
 }

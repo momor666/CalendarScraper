@@ -98,7 +98,8 @@ public class AirbnbScraper {
 //				System.out.println("looking:"+endDate);
 				while(!startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
 //					System.out.println(startDate);
-					property.add_Airbnb_Availablity(startDate.toString().split("T")[0]);
+					if (!(startDate.plusDays(2)).isBefore(System.currentTimeMillis()))
+						property.add_Airbnb_Availablity(startDate.toString().split("T")[0]);
 					startDate = startDate.plusDays(1);
 				}
 			}

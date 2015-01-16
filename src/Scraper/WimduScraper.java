@@ -64,41 +64,44 @@ public class WimduScraper {
  	}
 	
 	void loadIcsFile(String file) throws IOException{
-		 ArrayList<String> tmp1 = new ArrayList<String>();
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		String line ="";
 		while((line= br.readLine())!=null){
-//			System.out.println(line);
-			if (line.contains("DTEND") || line.contains("DTSTART") || line.contains("SUMMARY")){
-//				line = line.split(":")[1];
-				tmp1.add(line);
-//				System.out.println(line);
+			if (line.contains("DTEND") || line.contains("DTSTART")){
+				line = line.split(":")[1];
+				tmp.add(line);
 			}
 		}
 		br.close();
 		fr.close();
-		
-		for (int i = tmp1.size()-1 ; i >= 0; i=i-3){
-//			System.out.println(tmp1.get(i));
-			if (tmp1.get(i).contains("SUMMARY")){
-				tmp.add(tmp1.get(i-2).split(":")[1]);
-//				System.out.println(tmp1.get(i-2).split(":")[1]);
-				tmp.add(tmp1.get(i-1).split(":")[1]);
-//				System.out.println(tmp1.get(i-1).split(":")[1]);
-			}
-		}
+//		System.out.println("Here:"+tmp);
 		
 	}
 	
 	void updateAvailableDates() throws ParseException{
 		for (int i = tmp.size()-1; i >= 0; i=i-2){
 			SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd"); 			
-			Date d = dt.parse(tmp.get(i));
-			DateTime unavailableDate = new DateTime(d);
-			if (!(unavailableDate.plusDays(2)).isBefore(System.currentTimeMillis())){
-//				System.out.println(unavailableDate);
-				property.add_Wimdu_Availablity(unavailableDate.toString().split("T")[0]);				
+			Date sDate = dt.parse(tmp.get(i));
+			Date eDate = dt.parse(tmp.get(i-1));
+			DateTime startDate = new DateTime(sDate);
+			DateTime endDate = new DateTime(eDate);
+			if (!(endDate.plusDays(2)).isBefore(System.currentTimeMillis())){
+//				System.out.println("START:"+startDate);
+//				System.out.println("END:"+endDate);
+				if (startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
+					property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
+					System.out.println(startDate.toString().split("T")[0]);
+				} else {
+					while(!startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
+//						System.out.println(startDate);
+						if (!(startDate.plusDays(2)).isBefore(System.currentTimeMillis())){
+							property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
+							System.out.println(startDate.toString().split("T")[0]);	
+						}
+						startDate = startDate.plusDays(1);
+					}
+				}
 			}
 		}
 	}

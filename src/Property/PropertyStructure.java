@@ -19,13 +19,13 @@ public class PropertyStructure {
 	}
 	
 	public void add_Airbnb_Availablity(String date){
-		System.out.println(date);
+//		System.out.println(date);
 		this.airbnb_availablity.add(date);
 		
 	}
 	
 	public void add_Wimdu_Availablity(String date){	
-		System.out.println(date);
+//		System.out.println(date);
 		this.wimdu_availablity.add(date);
 	}
 	
