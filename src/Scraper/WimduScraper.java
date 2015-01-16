@@ -14,7 +14,11 @@ import java.net.URLConnection;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import org.joda.time.DateTime;
 
 import Property.PropertyStructure;
 
@@ -34,8 +38,8 @@ public class WimduScraper {
 		System.out.println("Downlaod wimdu complete");
 		loadIcsFile("/tmp/wimdu.ics");
 		System.out.println("Wimdu file parsed");
-//		updateAvailableDates();
-//		System.out.println("Wimdu availablity updated");
+		updateAvailableDates();
+		System.out.println("Wimdu availablity updated");
 	}
 	
 	void downloadFromUrl(URL url, String localFilename) throws IOException {
@@ -60,18 +64,43 @@ public class WimduScraper {
  	}
 	
 	void loadIcsFile(String file) throws IOException{
+		 ArrayList<String> tmp1 = new ArrayList<String>();
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);
 		String line ="";
 		while((line= br.readLine())!=null){
-			if (line.contains("DTEND") || line.contains("DTSTART")){
-				line = line.split(":")[1];
-				tmp.add(line);
-				System.out.println(line);
+//			System.out.println(line);
+			if (line.contains("DTEND") || line.contains("DTSTART") || line.contains("SUMMARY")){
+//				line = line.split(":")[1];
+				tmp1.add(line);
+//				System.out.println(line);
 			}
 		}
 		br.close();
 		fr.close();
+		
+		for (int i = tmp1.size()-1 ; i >= 0; i=i-3){
+//			System.out.println(tmp1.get(i));
+			if (tmp1.get(i).contains("SUMMARY")){
+				tmp.add(tmp1.get(i-2).split(":")[1]);
+//				System.out.println(tmp1.get(i-2).split(":")[1]);
+				tmp.add(tmp1.get(i-1).split(":")[1]);
+//				System.out.println(tmp1.get(i-1).split(":")[1]);
+			}
+		}
+		
+	}
+	
+	void updateAvailableDates() throws ParseException{
+		for (int i = tmp.size()-1; i >= 0; i=i-2){
+			SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd"); 			
+			Date d = dt.parse(tmp.get(i));
+			DateTime unavailableDate = new DateTime(d);
+			if (!(unavailableDate.plusDays(2)).isBefore(System.currentTimeMillis())){
+//				System.out.println(unavailableDate);
+				property.add_Wimdu_Availablity(unavailableDate.toString().split("T")[0]);				
+			}
+		}
 	}
 	
 	

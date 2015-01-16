@@ -24,8 +24,9 @@ public class PropertyStructure {
 		
 	}
 	
-	public void set_Wimdu_Availablity(){	
-		
+	public void add_Wimdu_Availablity(String date){	
+		System.out.println(date);
+		this.wimdu_availablity.add(date);
 	}
 	
 	public void set_HolidayLetting_Availablity(){
