@@ -23,6 +23,7 @@ public class CalendarSync {
 			airbnb.scrape();
 			//scrape wimdu
 			WimduScraper wimdu = new WimduScraper(config.getPropertyList().get(i));
+			wimdu.scrape();
 			//scrape holidayletting
 			HolidayLettingScraper holidayletting = new HolidayLettingScraper(config.getPropertyList().get(i));
 		}
