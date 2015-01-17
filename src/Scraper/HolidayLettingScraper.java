@@ -1,6 +1,7 @@
 package Scraper;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import org.joda.time.DateTime;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -40,10 +42,17 @@ public class HolidayLettingScraper {
 
 	private void scrapeCalendarData() throws IOException {
 		try{
+			String Xport = System.getProperty(
+	                "lmportal.xvfb.id", ":1");
+	        final File firefoxPath = new File(System.getProperty(
+	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
+	        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
+	        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
+			
 			ProfilesIni profilesIni = new ProfilesIni();
 			FirefoxProfile profile = profilesIni.getProfile("default");
 			profile.setAssumeUntrustedCertificateIssuer(false);
-			this.driver = new FirefoxDriver(profile);
+			this.driver =  new FirefoxDriver(firefoxBinary, profile);
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://www.holidaylettings.co.uk/";
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
