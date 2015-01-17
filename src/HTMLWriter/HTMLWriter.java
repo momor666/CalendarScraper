@@ -33,21 +33,32 @@ public class HTMLWriter {
 	public String getHead() {
 		String s = "<html>\n";
 		s+= "<head>";
+		s += "<title>Calendar Sync Checker</title>";
 		s+="<script type=\"text/javascript\">";
 		s+="  setTimeout(function(){";
 		s+="    location.reload()";
 		s+="  },10000)";
-		s+="</script>";
-		s+= "</head>";
+		s+="</script>\n";
+	    s+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+	    s+= "<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n";
+
+		s+= "</head>\n";
 		s+= "<body>\n";
+		s+= "<div class=\"container\">";
+
+		 s+="<div class=\"starter-template\">";
 		return s;
 	}
 	
 	public String getTail(){
 		String s ="";
 		s+= "<h4> Synchronisation Checked at:" + LocalDateTime.now() +"<h4>\n";
-		s +=  "</body>\n";
-		s += "</html>\n";
+	    s+= "<script src=\"http://code.jquery.com/jquery.js\"></script>\n";
+	    s+="<script src=\"js/bootstrap.min.js\"></script>\n";
+	    s+= "</div>\n";
+	    s+= "</div>\n";
+		s +=  "</body>\n\n";
+		s += "</html>\n\n";
 		return s;
 	}
 	
@@ -72,8 +83,6 @@ public class HTMLWriter {
 		if(!message.contains("Out of Sync")){
 			SendMailTLS.email_enabled = true;
 		}
-		
-		
 		
 		message="";  
 	}

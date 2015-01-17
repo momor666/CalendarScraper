@@ -30,11 +30,21 @@ public class ConflictChecker {
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0){
-			html.addToHTML("<p style=\"color:red\">Out of Sync</p>");
-			html.addToHTML("Airbnb" + property.airbnb_availablity +"<br>");
-			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");	
+		    html.addToHTML("<div class=\"alert alert-error\">");
+		    html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Airbnb</button>");
+		    html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Wimdu</button>");
+		    html.addToHTML("Out of Sync");
+		    html.addToHTML("</div>");
+		    html.addToHTML("Airbnb" + property.airbnb_availablity +"<br>");
+			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");
+			
 		} else {
-			html.addToHTML("<p style=\"color:green\">In Sync!</p>");
+			html.addToHTML("<div class=\"alert alert-success\">");
+			html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Airbnb</button>");
+		    html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Wimdu</button>");
+			html.addToHTML("In Sync!");
+			html.addToHTML("</div>");
+			
 		}
 	}
 }

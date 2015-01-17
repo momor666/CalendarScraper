@@ -29,7 +29,7 @@ public class CalendarSync {
 			System.out.print("Running");
 			for (int i =0; i < config.getPropertyList().size() ; i++){
 				System.out.print(".");
-				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");
+				html.addToHTML("<h3> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h3>");
 				//scrape Airbnb
 				AirbnbScraper airbnb = new AirbnbScraper(config.getPropertyList().get(i));
 				airbnb.scrape();
@@ -41,7 +41,7 @@ public class CalendarSync {
 				HolidayLettingScraper holidayletting = new HolidayLettingScraper(config.getPropertyList().get(i));
 				
 				//Checking for conflicts.
-				html.addToHTML("Checking Airbnb and Wimdu");
+//				html.addToHTML("Checking Airbnb and Wimdu");
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
 			
