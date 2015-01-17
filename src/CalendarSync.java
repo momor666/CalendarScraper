@@ -16,7 +16,8 @@ import util.ConfigurationUtil;
 
 
 public class CalendarSync {
-	public static void main(String[] args) throws MalformedURLException, IOException, ParseException, InterruptedException{
+	public static void main(String[] args) {
+	try{
 		//Load Properties
 		ConfigurationUtil config = new ConfigurationUtil();
 		HTMLWriter html = new HTMLWriter();
@@ -50,5 +51,7 @@ public class CalendarSync {
 			System.out.println("Waiting");
 			Thread.sleep(10000);
 		}
+	} catch (Exception e){
+		e.printStackTrace();
 	}
-}
+}}

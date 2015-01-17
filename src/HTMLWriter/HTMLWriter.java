@@ -57,7 +57,7 @@ public class HTMLWriter {
 	}
 	
 	public void writeHTMLFile(String s) throws IOException{
-		FileWriter fw = new FileWriter(s,false);
+		FileWriter fw = new FileWriter(s);
 		PrintWriter pw = new PrintWriter(fw);
 		pw.println(getHead());
 		pw.println(message);
