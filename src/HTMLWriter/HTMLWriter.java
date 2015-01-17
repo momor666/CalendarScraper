@@ -90,11 +90,11 @@ public class HTMLWriter {
 		pw.close();
 		fw.close();
 		
-		if (SendMailTLS.email_enabled && message.contains("Out of Sync")){
+		if (SendMailTLS.email_enabled && message.contains("danger")){
 			SendMailTLS.sendMail();
 			SendMailTLS.email_enabled = false;
 		} 
-		if(!message.contains("Out of Sync")){
+		if(!message.contains("danger")){
 			SendMailTLS.email_enabled = true;
 		}
 		
