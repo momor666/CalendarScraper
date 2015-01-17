@@ -1,5 +1,7 @@
 package ConflictChecker;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -33,14 +35,14 @@ public class ConflictChecker {
 		    html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		    if (property.airbnb_availablity.size() != 0){
 //		    	html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Airbnb </button>");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + property.airbnb_availablity +"<br>");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + property.airbnb_availablity.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
 		    } else {
 //		    	html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Airbnb </button>");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button> <br>");
 		    }
 		    if (property.wimdu_availablity.size() !=0){
 //		    	html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Wimdu</button>");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + property.wimdu_availablity +"");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + property.wimdu_availablity.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
 		    } else {
 //		    	html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Wimdu</button>");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Wimdu</button> ");

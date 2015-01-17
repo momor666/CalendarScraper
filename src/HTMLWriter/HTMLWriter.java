@@ -54,7 +54,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V1.0</h1>";
+		s+= "<h1>Calendar Sync Checker V1.1</h1>";
 		s+= "<p class=\"lead\">Checking Airbnb and Wimdu</p>";
 		s+= "</div>";
 
