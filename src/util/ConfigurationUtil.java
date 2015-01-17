@@ -11,6 +11,10 @@ public class ConfigurationUtil {
 	private ArrayList<PropertyStructure> propertyList = new ArrayList<PropertyStructure>();
 	private int numberOfProperties;
 	private String html_output_file;
+	private String email_from;
+	private String email_password;
+	private String email_to;
+	private String web;
 	
 	{
 		Properties properties = loadProperties();
@@ -27,12 +31,28 @@ public class ConfigurationUtil {
 			}
 			
 			html_output_file = properties.getProperty("html_output_file");
-			
-				
+			email_from = properties.getProperty("email_from");
+			email_password = properties.getProperty("email_password");
+			email_to = properties.getProperty("email_to");
+			web = properties.getProperty("web");
 		}
 	}
 	
-	
+	public String getWeb() {
+		return web;
+	}
+
+	public String getEmail_from() {
+		return email_from;
+	}
+
+	public String getEmail_password() {
+		return email_password;
+	}
+
+	public String getEmail_to() {
+		return email_to;
+	}
 
 	public String getHtml_output_file() {
 		return html_output_file;

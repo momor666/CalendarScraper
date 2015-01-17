@@ -5,6 +5,7 @@ import java.text.ParseException;
 import javax.swing.text.html.HTML;
 
 import ConflictChecker.ConflictChecker;
+import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
 import Scraper.AirbnbScraper;
 import Scraper.HolidayLettingScraper;
@@ -19,6 +20,7 @@ public class CalendarSync {
 		//Load Properties
 		ConfigurationUtil config = new ConfigurationUtil();
 		HTMLWriter html = new HTMLWriter();
+		
 		
 //		config.printConfig();
 		while(true){
