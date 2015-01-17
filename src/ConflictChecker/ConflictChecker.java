@@ -26,7 +26,7 @@ public class ConflictChecker {
 //		System.out.println(property.wimdu_availablity.size());
 		HashSet<String> clone = new HashSet<String>(property.airbnb_availablity);
 		Iterator it = clone.iterator();
-		System.out.println("p:["+ property.holidayletting_name +"]");
+//		System.out.println("p:["+ property.holidayletting_name +"]");
 		while (it.hasNext()){
 			String s = (String) it.next();
 			if (property.airbnb_availablity.contains(s) && property.wimdu_availablity.contains(s) && (property.holidayletting_name==null || property.holidayletting_name.equals("") || property.holidayletting_availablity.contains(s))){
@@ -34,7 +34,7 @@ public class ConflictChecker {
 				property.wimdu_availablity.remove(s);
 				property.holidayletting_availablity.remove(s);
 			} else {
-				System.out.println(s+":" + Boolean.valueOf(property.airbnb_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.wimdu_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.holidayletting_name==null).toString() + " "+ Boolean.valueOf(property.holidayletting_name.equals("")).toString() + " "+ Boolean.valueOf(property.holidayletting_availablity.contains(s)).toString());
+//				System.out.println(s+":" + Boolean.valueOf(property.airbnb_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.wimdu_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.holidayletting_name==null).toString() + " "+ Boolean.valueOf(property.holidayletting_name.equals("")).toString() + " "+ Boolean.valueOf(property.holidayletting_availablity.contains(s)).toString());
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0 || property.holidayletting_availablity.size()!=0 ){

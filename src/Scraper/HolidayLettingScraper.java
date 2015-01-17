@@ -53,6 +53,7 @@ public class HolidayLettingScraper {
 			FirefoxProfile profile = profilesIni.getProfile("default");
 			profile.setAssumeUntrustedCertificateIssuer(false);
 			this.driver =  new FirefoxDriver(firefoxBinary, profile);
+//			this.driver =  new FirefoxDriver(profile);
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://www.holidaylettings.co.uk/";
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
