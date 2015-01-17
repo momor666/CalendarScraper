@@ -28,6 +28,7 @@ public class CalendarSync {
 			//Scrape Properties
 			System.out.print("Running");
 			for (int i =0; i < config.getPropertyList().size() ; i++){
+			
 				System.out.print(".");
 				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");
 				//scrape Airbnb
@@ -37,19 +38,23 @@ public class CalendarSync {
 				WimduScraper wimdu = new WimduScraper(config.getPropertyList().get(i));
 				wimdu.scrape();
 				
-				//scrape holidayletting
-				HolidayLettingScraper holidayletting = new HolidayLettingScraper(config.getPropertyList().get(i));
+//				//scrape holidayletting
+				HolidayLettingScraper holiday = new HolidayLettingScraper(config.getPropertyList().get(i));
+				holiday.scrape();
+			
+			
 				
 				//Checking for conflicts.
-//				html.addToHTML("Checking Airbnb and Wimdu");
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
-			
+//				break;
 			}
 			//Output HTML
 			html.writeHTMLFile(config.getHtml_output_file());
 			System.out.println("Waiting");
-			Thread.sleep(30000);
+			
+			Thread.sleep(60000);
+			break;
 		}
 	} catch (Exception e){
 		e.printStackTrace();

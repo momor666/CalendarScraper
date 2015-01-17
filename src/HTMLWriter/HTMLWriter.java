@@ -45,7 +45,7 @@ public class HTMLWriter {
 		s+="<script type=\"text/javascript\">\n";
 		s+="  setTimeout(function(){\n";
 		s+="    location.reload()\n";
-		s+="  },30000)\n";
+		s+="  },60000)\n";
 		s+="</script>\n";
 
 		s+="<title>Calendar Sync Checker</title>\n";
@@ -54,8 +54,8 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V1.1</h1>";
-		s+= "<p class=\"lead\">Checking Airbnb and Wimdu</p>";
+		s+= "<h1>Calendar Sync Checker V2.2</h1>";
+		s+= "<p class=\"lead\">Checking Airbnb, Wimdu and Holiday Letting</p>";
 		s+= "</div>";
 
 		
