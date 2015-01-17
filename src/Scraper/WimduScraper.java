@@ -91,13 +91,13 @@ public class WimduScraper {
 //				System.out.println("END:"+endDate);
 				if (startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
 					property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
-					System.out.println(startDate.toString().split("T")[0]);
+//					System.out.println(startDate.toString().split("T")[0]);
 				} else {
 					while(!startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
 //						System.out.println(startDate);
 						if (!(startDate.plusDays(2)).isBefore(System.currentTimeMillis())){
 							property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
-							System.out.println(startDate.toString().split("T")[0]);	
+//							System.out.println(startDate.toString().split("T")[0]);	
 						}
 						startDate = startDate.plusDays(1);
 					}

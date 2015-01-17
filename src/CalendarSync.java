@@ -19,6 +19,7 @@ public class CalendarSync {
 		
 		//Scrape Properties
 		for (int i =0; i < config.getPropertyList().size() ; i++){
+			System.out.println("Property " + (i+1));
 			//scrape Airbnb
 			AirbnbScraper airbnb = new AirbnbScraper(config.getPropertyList().get(i));
 			airbnb.scrape();
