@@ -30,19 +30,30 @@ public class ConflictChecker {
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0){
-		    html.addToHTML("<div class=\"alert alert-error\">");
-		    html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Airbnb</button>");
-		    html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Wimdu</button>");
-		    html.addToHTML("Out of Sync");
-		    html.addToHTML("</div>");
-		    html.addToHTML("Airbnb" + property.airbnb_availablity +"<br>");
-			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");
+		    html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+		    if (property.airbnb_availablity.size() != 0){
+//		    	html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Airbnb </button>");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + property.airbnb_availablity +"<br>");
+		    } else {
+//		    	html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Airbnb </button>");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button> <br>");
+		    }
+		    if (property.wimdu_availablity.size() !=0){
+//		    	html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Wimdu</button>");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + property.wimdu_availablity +"");
+		    } else {
+//		    	html.addToHTML("<button class=\"btn btn-small btn-danger\" type=\"button\">Wimdu</button>");
+		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Wimdu</button> ");
+		    }
+		    html.addToHTML("<br>");
+		    
+//			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");
+			html.addToHTML("</div>");
 			
 		} else {
 			html.addToHTML("<div class=\"alert alert-success\">");
-			html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Airbnb</button>");
-		    html.addToHTML("<button class=\"btn btn-small btn-success\" type=\"button\">Wimdu</button>");
-			html.addToHTML("In Sync!");
+			html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button>");
+		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
 			html.addToHTML("</div>");
 			
 		}

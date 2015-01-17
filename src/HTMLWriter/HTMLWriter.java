@@ -31,32 +31,46 @@ public class HTMLWriter {
 	}
 	
 	public String getHead() {
-		String s = "<html>\n";
-		s+= "<head>";
-		s += "<title>Calendar Sync Checker</title>";
-		s+="<script type=\"text/javascript\">";
-		s+="  setTimeout(function(){";
-		s+="    location.reload()";
-		s+="  },10000)";
-		s+="</script>\n";
-	    s+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-	    s+= "<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n";
+		String s= "<!DOCTYPE html>\n";
+		s += "<html lang=\"en\">\n";
+		s+= "<head>\n";
+		s+="<meta charset=\"utf-8\">\n";
+	    s+="<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
+	    s+="<meta name=\"viewport\" content=\"width=device-width, initial-scale=0.8\">\n";
+	    s+="<meta name=\"description\" content=\"\">\n";
+	    s+="<meta name=\"author\" content=\"\">\n";
+	    s+="<link rel=\"icon\" href=\"favicon.ico\">\n";
 
+		s += "<title>Calendar Sync Checker</title>\n";
+		s+="<script type=\"text/javascript\">\n";
+		s+="  setTimeout(function(){\n";
+		s+="    location.reload()\n";
+		s+="  },30000)\n";
+		s+="</script>\n";
+
+		s+="<title>Calendar Sync Checker</title>\n";
+		 
 		s+= "</head>\n";
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
+		s+= "<div class=\"page-header\">";
+		s+= "<h1>Calendar Sync Checker V1.0</h1>";
+		s+= "<p class=\"lead\">Checking Airbnb and Wimdu</p>";
+		s+= "</div>";
 
-		 s+="<div class=\"starter-template\">";
+		
+		
 		return s;
 	}
 	
 	public String getTail(){
-		String s ="";
-		s+= "<h4> Synchronisation Checked at:" + LocalDateTime.now() +"<h4>\n";
-	    s+= "<script src=\"http://code.jquery.com/jquery.js\"></script>\n";
-	    s+="<script src=\"js/bootstrap.min.js\"></script>\n";
-	    s+= "</div>\n";
-	    s+= "</div>\n";
+		String s ="      <hr>\n";
+	    s+= "<h5> Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"<h5>\n";
+		s+="</div> <!-- /container -->";
+		s+="<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css\">";
+		s+="<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css\">";
+		s+="<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\">";
+		s+="<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js\"></script>";
 		s +=  "</body>\n\n";
 		s += "</html>\n\n";
 		return s;
