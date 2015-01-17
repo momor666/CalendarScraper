@@ -10,6 +10,7 @@ import Property.PropertyStructure;
 public class ConfigurationUtil {	
 	private ArrayList<PropertyStructure> propertyList = new ArrayList<PropertyStructure>();
 	private int numberOfProperties;
+	private String html_output_file;
 	
 	{
 		Properties properties = loadProperties();
@@ -25,10 +26,17 @@ public class ConfigurationUtil {
 				propertyList.add(property);
 			}
 			
+			html_output_file = properties.getProperty("html_output_file");
+			
 				
 		}
 	}
 	
+	
+
+	public String getHtml_output_file() {
+		return html_output_file;
+	}
 
 	public ArrayList<PropertyStructure> getPropertyList() {
 		return propertyList;

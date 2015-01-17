@@ -33,11 +33,11 @@ public class AirbnbScraper {
 	public void scrape() throws MalformedURLException, IOException, ParseException{
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.airbnb_ical_link),"/tmp/airbnb.ics");
-		System.out.println("Downlaod airbnb complete");
+//		System.out.println("Downlaod airbnb complete");
 		loadIcsFile("/tmp/airbnb.ics");
-		System.out.println("Airbnb file parsed");
+//		System.out.println("Airbnb file parsed");
 		updateAvailableDates();
-		System.out.println("Airbnb availablity updated");
+//		System.out.println("Airbnb availablity updated");
 		
 	}
 	

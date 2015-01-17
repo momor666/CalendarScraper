@@ -35,11 +35,11 @@ public class WimduScraper {
 	public void scrape() throws MalformedURLException, IOException, ParseException{
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.wimdu_ical_link),"/tmp/wimdu.ics");
-		System.out.println("Downlaod wimdu complete");
+//		System.out.println("Downlaod wimdu complete");
 		loadIcsFile("/tmp/wimdu.ics");
-		System.out.println("Wimdu file parsed");
+//		System.out.println("Wimdu file parsed");
 		updateAvailableDates();
-		System.out.println("Wimdu availablity updated");
+//		System.out.println("Wimdu availablity updated");
 	}
 	
 	void downloadFromUrl(URL url, String localFilename) throws IOException {

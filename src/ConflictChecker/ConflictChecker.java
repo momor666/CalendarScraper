@@ -3,14 +3,17 @@ package ConflictChecker;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import HTMLWriter.HTMLWriter;
 import Property.PropertyStructure;
 
 public class ConflictChecker {
 
 	PropertyStructure property;
+	HTMLWriter html;
 	
-	public ConflictChecker(PropertyStructure p){
+	public ConflictChecker(PropertyStructure p,HTMLWriter html){
 		this.property = p;
+		this.html = html;
 	}
 	
 	public void checkConflicts(){
@@ -26,11 +29,11 @@ public class ConflictChecker {
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0){
-			System.out.println("Mismatch");
-			System.out.println("Airbnb" + property.airbnb_availablity);
-			System.out.println("Wimdu" + property.wimdu_availablity);	
+			html.addToHTML("<p style=\"color:red\">Out of Sync</p>");
+			html.addToHTML("Airbnb" + property.airbnb_availablity +"<br>");
+			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");	
 		} else {
-			System.out.println("Everything in sync!");
+			html.addToHTML("<p style=\"color:green\">In Sync!</p>");
 		}
 	}
 }
