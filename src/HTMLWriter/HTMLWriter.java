@@ -15,6 +15,8 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
+import Email.SendMailTLS;
+
 public class HTMLWriter {
 	String message ="";
 	
@@ -62,9 +64,18 @@ public class HTMLWriter {
 		pw.println(getTail());
 		pw.close();
 		fw.close();
-		message="";
+		
+		if (SendMailTLS.email_enabled && message.contains("Out of Sync")){
+			SendMailTLS.sendMail();
+			SendMailTLS.email_enabled = false;
+		} 
+		if(!message.contains("Out of Sync")){
+			SendMailTLS.email_enabled = true;
+		}
 		
 		
+		
+		message="";  
 	}
 	
 }

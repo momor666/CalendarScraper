@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project CalendarScraper">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/Users/sislam/Documents/workspace/CalendarScraper/dist/CalendarSynDeamon.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="CalendarSync"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="/Users/sislam/Documents/workspace/CalendarScraper/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/apache-mime4j-0.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/bsh-1.3.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/cglib-nodep-2.1_3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-collections-3.2.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-exec-1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-io-2.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-jxpath-1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-lang3-3.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-net-3.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/hamcrest-core-1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/hamcrest-library-1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/ini4j-0.5.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/jcommander-1.29.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/jetty-websocket-8.1.8.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/jna-3.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/jna-platform-3.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/json-20080701.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/junit-dep-4.11.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/mail-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/netty-3.5.7.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/protobuf-java-2.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/sac-1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/serializer-2.7.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/testng-6.8.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/xalan-2.7.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/xml-apis-1.4.01.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-codec-1.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/commons-logging-1.1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/cssparser-0.9.14.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/gson-2.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/guava-18.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/htmlunit-2.15.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/htmlunit-core-js-2.15.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/httpclient-4.3.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/httpcore-4.3.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/httpmime-4.3.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/nekohtml-1.9.21.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/operadriver-1.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/phantomjsdriver-1.1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/selenium-java-2.44.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/xercesImpl-2.11.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/Users/sislam/Documents/workspace/CalendarScraper/libs/joda-time-2.7.jar"/>
+        </jar>
+    </target>
+</project>

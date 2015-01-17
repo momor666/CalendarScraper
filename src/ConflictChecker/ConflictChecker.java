@@ -30,16 +30,11 @@ public class ConflictChecker {
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0){
-			if (SendMailTLS.email_enabled){
-				SendMailTLS.sendMail();
-				SendMailTLS.email_enabled = false;
-			}
 			html.addToHTML("<p style=\"color:red\">Out of Sync</p>");
 			html.addToHTML("Airbnb" + property.airbnb_availablity +"<br>");
 			html.addToHTML("Wimdu" + property.wimdu_availablity +"<br>");	
 		} else {
 			html.addToHTML("<p style=\"color:green\">In Sync!</p>");
-			SendMailTLS.email_enabled = true;
 		}
 	}
 }
