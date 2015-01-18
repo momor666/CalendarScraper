@@ -37,6 +37,7 @@ public class CalendarSync {
 				//scrape wimdu
 				WimduScraper wimdu = new WimduScraper(config.getPropertyList().get(i));
 				wimdu.scrape();
+//				System.out.println(config.getPropertyList().get(i).wimdu_availablity.size());
 				
 //				//scrape holidayletting
 				HolidayLettingScraper holiday = new HolidayLettingScraper(config.getPropertyList().get(i));
@@ -50,7 +51,7 @@ public class CalendarSync {
 //				break;
 			}
 			//Output HTML
-			html.writeHTMLFile(config.getHtml_output_file());
+			html.writeHTMLFile(config.getHtml_output_file(),config);
 			System.out.println("Waiting");
 			
 			Thread.sleep(60000);

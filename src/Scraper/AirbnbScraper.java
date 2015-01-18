@@ -1,6 +1,7 @@
 package Scraper;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -43,6 +44,8 @@ public class AirbnbScraper {
 	
 	
 	void downloadFromUrl(URL url, String localFilename) throws IOException {
+		File f = new File(localFilename);
+		if (f.exists()) f.delete();
 	    InputStream is = null;
 	    FileOutputStream fos = null;
 
@@ -98,7 +101,7 @@ public class AirbnbScraper {
 //				System.out.println("looking:"+endDate);
 				while(!startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
 //					System.out.println(startDate);
-					if (!(startDate.plusDays(2)).isBefore(System.currentTimeMillis()))
+					if (!(startDate.plusDays(1)).isBefore(System.currentTimeMillis()))
 						property.add_Airbnb_Availablity(startDate.toString().split("T")[0]);
 					startDate = startDate.plusDays(1);
 				}

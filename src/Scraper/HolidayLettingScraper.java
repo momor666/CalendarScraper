@@ -79,7 +79,10 @@ public class HolidayLettingScraper {
 	}
 	
 	private void printToFile(String s) throws IOException{
-		FileWriter fw = new FileWriter("/tmp/holidayletting.data");
+		String localFileName = "/tmp/holidayletting.data";
+		File f = new File(localFileName);
+		if (f.exists()) f.delete();
+		FileWriter fw = new FileWriter(localFileName);
 		PrintWriter pw = new PrintWriter(fw);
 		String[] tmp = s.split("\\n");
 		for (int i =0; i < tmp.length;i++){
@@ -110,7 +113,7 @@ public class HolidayLettingScraper {
 			SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy"); 			
 			Date d = dt.parse(line);
 			DateTime date = new DateTime(d);
-			if (!(date.plusDays(2)).isBefore(System.currentTimeMillis())){
+			if (!(date.plusDays(1)).isBefore(System.currentTimeMillis())){
 				property.add_HolidayLetting_Availablity(date.toString().split("T")[0]);
 			}
 		}

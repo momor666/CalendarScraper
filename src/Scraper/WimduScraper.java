@@ -1,6 +1,7 @@
 package Scraper;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -43,7 +44,8 @@ public class WimduScraper {
 	}
 	
 	void downloadFromUrl(URL url, String localFilename) throws IOException {
-		
+		File f = new File(localFilename);
+		if (f.exists()) f.delete();
 		StringBuffer output = new StringBuffer();
 		FileWriter fw = new FileWriter (localFilename);
 		PrintWriter pw = new PrintWriter(fw);
@@ -89,14 +91,15 @@ public class WimduScraper {
 			if (!(endDate.plusDays(2)).isBefore(System.currentTimeMillis())){
 //				System.out.println("START:"+startDate);
 //				System.out.println("END:"+endDate);
-				if (startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
+				if (startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay()) && (!(startDate).plusDays(1).isBefore(System.currentTimeMillis()))){
 					property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
 //					System.out.println(startDate.toString().split("T")[0]);
 				} else {
 					while(!startDate.withTimeAtStartOfDay().equals(endDate.withTimeAtStartOfDay())){
 //						System.out.println(startDate);
-						if (!(startDate.plusDays(2)).isBefore(System.currentTimeMillis())){
+						if (!(startDate).plusDays(1).isBefore(System.currentTimeMillis())){							
 							property.add_Wimdu_Availablity(startDate.toString().split("T")[0]);
+//					  		System.out.println(startDate.toString().split("T")[0] + ":" +property.wimdu_availablity.size());
 //							System.out.println(startDate.toString().split("T")[0]);	
 						}
 						startDate = startDate.plusDays(1);

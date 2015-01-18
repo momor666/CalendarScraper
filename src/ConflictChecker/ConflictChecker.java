@@ -38,6 +38,7 @@ public class ConflictChecker {
 			}
 		}
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0 || property.holidayletting_availablity.size()!=0 ){
+			property.conflict_detected = true;
 		    html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		    if (property.airbnb_availablity.size() != 0){
 		    	List sortedList = new ArrayList(property.airbnb_availablity);

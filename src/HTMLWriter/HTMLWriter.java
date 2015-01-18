@@ -15,6 +15,7 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
+import util.ConfigurationUtil;
 import Email.SendMailTLS;
 
 public class HTMLWriter {
@@ -54,7 +55,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V2.3</h1>";
+		s+= "<h1>Calendar Sync Checker V3.0</h1>";
 		s+= "<p class=\"lead\">Checking Airbnb, Wimdu and Holiday Letting</p>";
 		s+= "</div>";
 
@@ -81,10 +82,26 @@ public class HTMLWriter {
 		return message;
 	}
 	
-	public void writeHTMLFile(String s) throws IOException{
+	public String getStatus(ConfigurationUtil config){
+		String s = "";
+		s+= "<h4>Status ";
+		
+		for (int i =0; i < config.getPropertyList().size(); i++ ){
+			if (config.getPropertyList().get(i).conflict_detected){
+				s+= "<span class=\"label label-danger\">"+ (i+1)+"</span>";
+			} else {
+				s+= "<span class=\"label label-success\">"+ (i+1)+"</span>";
+			}
+		}
+		s+="</h4>";
+		return s;
+	}
+	
+	public void writeHTMLFile(String s, ConfigurationUtil config) throws IOException{
 		FileWriter fw = new FileWriter(s);
 		PrintWriter pw = new PrintWriter(fw);
 		pw.println(getHead());
+		pw.println(getStatus(config));
 		pw.println(message);
 		pw.println(getTail());
 		pw.close();
