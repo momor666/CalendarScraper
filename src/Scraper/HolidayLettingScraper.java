@@ -32,7 +32,7 @@ public class HolidayLettingScraper {
 	}
 	
 	
-	public void scrape() throws InterruptedException, IOException, ParseException{
+	public void scrape() throws Exception{
 		if (property.holidayletting_name==null || property.holidayletting_name.equals(""))
 			return;
 		
@@ -41,7 +41,7 @@ public class HolidayLettingScraper {
 	}
 
 
-	private void scrapeCalendarData() throws IOException {
+	private void scrapeCalendarData() throws Exception {
 		try{
 			
 			
@@ -83,6 +83,7 @@ public class HolidayLettingScraper {
 			e.printStackTrace();
 		} finally {
 			driver.quit();
+			throw new Exception();
 		}
 	}
 	

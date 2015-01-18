@@ -16,8 +16,8 @@ import util.ConfigurationUtil;
 
 
 public class CalendarSync {
-	public static void main(String[] args) {
-	try{
+	public static void main(String[] args) throws Exception {
+//	try{
 		//Load Properties
 		ConfigurationUtil config = new ConfigurationUtil();
 		HTMLWriter html = new HTMLWriter();
@@ -57,7 +57,8 @@ public class CalendarSync {
 			Thread.sleep(60000);
 //			break;
 		}
-	} catch (Exception e){
-		e.printStackTrace();
+//	} catch (Exception e){
+//		e.printStackTrace();
+//	}
+}
 	}
-}}
