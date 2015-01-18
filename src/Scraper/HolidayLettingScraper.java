@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.joda.time.DateTime;
@@ -42,18 +43,24 @@ public class HolidayLettingScraper {
 
 	private void scrapeCalendarData() throws IOException {
 		try{
-			String Xport = System.getProperty(
-	                "lmportal.xvfb.id", ":1");
-	        final File firefoxPath = new File(System.getProperty(
-	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
-	        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
-	        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
-//			
+			
+			
 			ProfilesIni profilesIni = new ProfilesIni();
 			FirefoxProfile profile = profilesIni.getProfile("default");
-//			profile.setAssumeUntrustedCertificateIssuer(false);
-			this.driver =  new FirefoxDriver(firefoxBinary, profile);
-			this.driver =  new FirefoxDriver(profile);
+			profile.setAssumeUntrustedCertificateIssuer(false);
+			final File firefoxPath = new File(System.getProperty(
+	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
+
+			if (firefoxPath.exists()){
+				String Xport = System.getProperty(
+		                "lmportal.xvfb.id", ":1");
+		        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
+		        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
+		        this.driver =  new FirefoxDriver(firefoxBinary, profile);
+			} else{
+				this.driver =  new FirefoxDriver(profile);	
+			}
+			
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://www.holidaylettings.co.uk/";
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -64,7 +71,8 @@ public class HolidayLettingScraper {
 		    driver.findElement(By.id("ownerPassword")).sendKeys("samiul123");
 		    driver.findElement(By.xpath("//div[@id='ownerLoginForm']/button")).click();
 		    driver.findElement(By.id("calendarContainer"));
-		    for (int i =0; i <10; i++){
+		    int randomtry = new Random().nextInt((10 - 5) + 1) + 5;
+		    for (int i =0; i <randomtry; i++){
 		    	driver.findElement(By.cssSelector("span.ui-selectmenu-status")).click();
 			    driver.findElement(By.xpath("//a[contains(text(),'"+property.holidayletting_name+"')]")).click();
 			    Thread.sleep(5000);
