@@ -54,7 +54,7 @@ public class CalendarSync {
 			System.out.println("Waiting");
 			
 			Thread.sleep(60000);
-			break;
+//			break;
 		}
 	} catch (Exception e){
 		e.printStackTrace();
