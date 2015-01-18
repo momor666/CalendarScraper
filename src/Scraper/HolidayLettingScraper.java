@@ -79,12 +79,12 @@ public class HolidayLettingScraper {
 		    }
 		    driver.findElement(By.id("calendarContainer"));
 		    printToFile(driver.getPageSource());
+		    driver.quit();
 		} catch (Exception e){
 			e.printStackTrace();
-		} finally {
 			driver.quit();
 			throw new Exception();
-		}
+		} 
 	}
 	
 	private void printToFile(String s) throws IOException{
