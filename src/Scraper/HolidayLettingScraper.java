@@ -48,12 +48,12 @@ public class HolidayLettingScraper {
 	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
 	        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
 	        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
-			
+//			
 			ProfilesIni profilesIni = new ProfilesIni();
 			FirefoxProfile profile = profilesIni.getProfile("default");
-			profile.setAssumeUntrustedCertificateIssuer(false);
+//			profile.setAssumeUntrustedCertificateIssuer(false);
 			this.driver =  new FirefoxDriver(firefoxBinary, profile);
-//			this.driver =  new FirefoxDriver(profile);
+			this.driver =  new FirefoxDriver(profile);
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://www.holidaylettings.co.uk/";
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -64,10 +64,10 @@ public class HolidayLettingScraper {
 		    driver.findElement(By.id("ownerPassword")).sendKeys("samiul123");
 		    driver.findElement(By.xpath("//div[@id='ownerLoginForm']/button")).click();
 		    driver.findElement(By.id("calendarContainer"));
-		    for (int i =0; i <5; i++){
+		    for (int i =0; i <10; i++){
 		    	driver.findElement(By.cssSelector("span.ui-selectmenu-status")).click();
 			    driver.findElement(By.xpath("//a[contains(text(),'"+property.holidayletting_name+"')]")).click();
-			    Thread.sleep(3000);
+			    Thread.sleep(5000);
 		    }
 		    driver.findElement(By.id("calendarContainer"));
 		    printToFile(driver.getPageSource());
