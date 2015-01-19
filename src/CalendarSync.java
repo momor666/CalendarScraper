@@ -42,13 +42,11 @@ public class CalendarSync {
 //				//scrape holidayletting
 				HolidayLettingScraper holiday = new HolidayLettingScraper(config.getPropertyList().get(i));
 				holiday.scrape();
-			
-			
 				
 				//Checking for conflicts.
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
-//				break;
+				
 			}
 			//Output HTML
 			html.writeHTMLFile(config.getHtml_output_file(),config);

@@ -10,6 +10,7 @@ import java.util.List;
 import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
 import Property.PropertyStructure;
+import Scraper.AirbnbScraper;
 
 public class ConflictChecker {
 
@@ -121,6 +122,11 @@ public class ConflictChecker {
 		
 		html.addToHTML("</tr>");
 		html.addToHTML("</table>");
+		
+		//Reset the availability for the property so that it is not carried over to the next cycle.
+		property.airbnb_availablity.clear();
+		property.wimdu_availablity.clear();
+		property.holidayletting_availablity.clear();
 		  
 	}
 }
