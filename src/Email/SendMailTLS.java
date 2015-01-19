@@ -67,7 +67,7 @@ public class SendMailTLS {
 		         				
 		         
 		         
-		         message.setSubject("s");
+		         message.setSubject(s);
 
 		         // Create the message part 
 		         BodyPart messageBodyPart = new MimeBodyPart();
