@@ -26,6 +26,10 @@ public class ConflictChecker {
 //		System.out.println(property.airbnb_availablity.size());
 //		System.out.println(property.wimdu_availablity.size());
 		HashSet<String> clone = new HashSet<String>(property.airbnb_availablity);
+		
+		//Resetting Conflicted Status
+		property.conflict_detected = false;
+		
 		Iterator it = clone.iterator();
 //		System.out.println("p:["+ property.holidayletting_name +"]");
 		while (it.hasNext()){

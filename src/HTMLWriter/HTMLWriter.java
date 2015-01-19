@@ -55,7 +55,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V4.0</h1>";
+		s+= "<h1>Calendar Sync Checker V4.1</h1>";
 		s+= "<p class=\"lead\">Checking Airbnb, Wimdu and Holiday Letting</p>";
 		s+= "</div>";
 
@@ -108,10 +108,11 @@ public class HTMLWriter {
 		fw.close();
 		
 		if (SendMailTLS.email_enabled && message.contains("danger")){
-			SendMailTLS.sendMail();
+			SendMailTLS.sendMail("Calendars out of Sync!");
 			SendMailTLS.email_enabled = false;
 		} 
-		if(!message.contains("danger")){
+		if(!message.contains("danger") && !SendMailTLS.email_enabled){
+			SendMailTLS.sendMail("Calendars Synced");
 			SendMailTLS.email_enabled = true;
 		}
 		

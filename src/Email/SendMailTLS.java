@@ -31,7 +31,7 @@ public class SendMailTLS {
 	
 	 public static boolean email_enabled = true;
 	
-	public static void sendMail() {
+	public static void sendMail(String s) {
 		
 			ConfigurationUtil config = new ConfigurationUtil();
 		
@@ -67,7 +67,7 @@ public class SendMailTLS {
 		         				
 		         
 		         
-		         message.setSubject("Calendar out of sync.");
+		         message.setSubject("s");
 
 		         // Create the message part 
 		         BodyPart messageBodyPart = new MimeBodyPart();
