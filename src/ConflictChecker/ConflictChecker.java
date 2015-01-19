@@ -37,40 +37,90 @@ public class ConflictChecker {
 //				System.out.println(s+":" + Boolean.valueOf(property.airbnb_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.wimdu_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.holidayletting_name==null).toString() + " "+ Boolean.valueOf(property.holidayletting_name.equals("")).toString() + " "+ Boolean.valueOf(property.holidayletting_availablity.contains(s)).toString());
 			}
 		}
+		
+		  html.addToHTML("<table class=\"table\">");
+		  html.addToHTML("	<div class=\"row\">");
+
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0 || property.holidayletting_availablity.size()!=0 ){
 			property.conflict_detected = true;
-		    html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+
+			html.addToHTML("<div class=\"col-md-4\">");
+			html.addToHTML("<div class='text-center'>");
 		    if (property.airbnb_availablity.size() != 0){
 		    	List sortedList = new ArrayList(property.airbnb_availablity);
 		    	Collections.sort(sortedList);
+		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + sortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
+		    	html.addToHTML("</div>");
 		    } else {
+		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button> <br>");
+				html.addToHTML("</div>");
 		    }
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("<div class=\"col-md-4\">");
+		    html.addToHTML("<div class='text-center'>");
 		    if (property.wimdu_availablity.size() !=0){
 		    	List sortedList = new ArrayList(property.wimdu_availablity);
 		    	Collections.sort(sortedList);
+		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"<br>");
+		    	html.addToHTML("</div>");
 		    } else {
+		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Wimdu</button> <br>");
+				html.addToHTML("</div>");
 		    }
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("<div class=\"col-md-4\">");
+		    html.addToHTML("<div class='text-center'>");
 		    if (property.holidayletting_availablity.size() !=0){
 		    	List sortedList = new ArrayList(property.holidayletting_availablity);
 		    	Collections.sort(sortedList);
+		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Holiday Letting</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
+		    	html.addToHTML("</div>");
 		    } else {
+		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Holiday Letting</button> ");
+		    	html.addToHTML("</div>");
 		    }
-		    html.addToHTML("<br>");
-			html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+//		    html.addToHTML("<br>");
+
 			
 		} else {
+
+			html.addToHTML("<div class=\"col-md-4\">");
+			html.addToHTML("<div class='text-center'>");
 			html.addToHTML("<div class=\"alert alert-success\">");
 			html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button>");
-		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
-		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Holiday Letting</button>");
 			html.addToHTML("</div>");
+			html.addToHTML("</div>");
+			html.addToHTML("</div>");
+			html.addToHTML("<div class=\"col-md-4\">");
+			html.addToHTML("<div class='text-center'>");
+			html.addToHTML("<div class=\"alert alert-success\">");
+		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("<div class=\"col-md-4\">");
+		    html.addToHTML("<div class='text-center'>");
+			html.addToHTML("<div class=\"alert alert-success\">");
+		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Holiday Letting</button>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+		    html.addToHTML("</div>");
+			
 			
 		}
+		
+		html.addToHTML("</tr>");
+		html.addToHTML("</table>");
+		  
 	}
 }
