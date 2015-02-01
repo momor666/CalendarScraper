@@ -8,6 +8,7 @@ import ConflictChecker.ConflictChecker;
 import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
 import Scraper.AirbnbScraper;
+import Scraper.BookingDotComScraper;
 import Scraper.HolidayLettingScraper;
 import Scraper.WimduScraper;
 import util.ConfigurationUtil;
@@ -42,6 +43,10 @@ public class CalendarSync {
 //				//scrape holidayletting
 				HolidayLettingScraper holiday = new HolidayLettingScraper(config.getPropertyList().get(i));
 				holiday.scrape();
+				
+				//Booking.com Scraper
+				BookingDotComScraper bookingdotcom = new BookingDotComScraper(config.getPropertyList().get(i));
+				bookingdotcom.scrape();
 				
 				//Checking for conflicts.
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);

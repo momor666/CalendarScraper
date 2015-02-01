@@ -9,6 +9,7 @@ public class PropertyStructure {
 	public String wimdu_name;
 	public String wimdu_ical_link;
 	public String holidayletting_name;
+	public String bookingDotComPropertyId;
 	public boolean conflict_detected = false;
 	
 	public HashSet<String> airbnb_availablity = new HashSet<String>();

@@ -27,6 +27,7 @@ public class ConfigurationUtil {
 				property.wimdu_name = properties.getProperty("p"+(i+1)+"_wimdu_name");
 				property.wimdu_ical_link = properties.getProperty("p"+(i+1)+"_wimdu_ical_link");
 				property.holidayletting_name = properties.getProperty("p"+(i+1)+"_holidayletting_name");
+				property.bookingDotComPropertyId = properties.getProperty("p"+(i+1)+"_bookingdotcom_id");
 				propertyList.add(property);
 			}
 			
