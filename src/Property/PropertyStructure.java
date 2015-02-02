@@ -15,6 +15,7 @@ public class PropertyStructure {
 	public HashSet<String> airbnb_availablity = new HashSet<String>();
 	public HashSet<String> wimdu_availablity = new HashSet<String>();
 	public HashSet<String> holidayletting_availablity = new HashSet<String>();
+	public HashSet<String> bookingdotcom_availablity = new HashSet<String>();
 	
 	
 	public PropertyStructure() {
@@ -35,6 +36,11 @@ public class PropertyStructure {
 //		System.out.println(date);
 		this.holidayletting_availablity.add(date);
 	}
+	
+	public void add_Bookingdotcom_Availablity(String date){
+		this.bookingdotcom_availablity.add(date);
+	}
+	
 }
 
 
