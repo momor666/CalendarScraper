@@ -34,7 +34,7 @@ public class ConflictChecker {
 //		System.out.println("p:["+ property.holidayletting_name +"]");
 		while (it.hasNext()){
 			String s = (String) it.next();
-			if (property.airbnb_availablity.contains(s) && property.wimdu_availablity.contains(s) && (property.holidayletting_name==null || property.holidayletting_name.equals("") || property.holidayletting_availablity.contains(s)) && (property.bookingDotComPropertyId==null || property.bookingDotComPropertyId.equals("") || property.bookingdotcom_availablity.contains(s))){
+			if ( (property.airbnb_ical_link == null || property.airbnb_ical_link.equals("") || property.airbnb_availablity.contains(s)) && (property.wimdu_ical_link == null || property.wimdu_ical_link.equals("") || property.wimdu_availablity.contains(s)) && (property.holidayletting_name==null || property.holidayletting_name.equals("") || property.holidayletting_availablity.contains(s)) && (property.bookingDotComPropertyId==null || property.bookingDotComPropertyId.equals("") || property.bookingdotcom_availablity.contains(s))){
 				property.airbnb_availablity.remove(s);
 				property.wimdu_availablity.remove(s);
 				property.holidayletting_availablity.remove(s);
@@ -49,107 +49,112 @@ public class ConflictChecker {
 
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0 || property.holidayletting_availablity.size()!=0  || property.bookingdotcom_availablity.size() != 0){
 			property.conflict_detected = true;
+		}
 
-			html.addToHTML("<div class=\"col-md-3\">");
-			html.addToHTML("<div class='text-center'>");
-			if (property.airbnb_availablity.size() != 0){
-		    	List sortedList = new ArrayList(property.airbnb_availablity);
-		    	Collections.sort(sortedList);
-		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + sortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
-		    	html.addToHTML("</div>");
-		    } else {
+		html.addToHTML("<div class=\"col-md-3\">");
+		html.addToHTML("<div class='text-center'>");
+		
+		if (property.airbnb_availablity.size() != 0){
+		   	List sortedList = new ArrayList(property.airbnb_availablity);
+		   	Collections.sort(sortedList);
+		   	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+		   	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb</button> " + sortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
+		   	html.addToHTML("</div>");
+		} else if (property.airbnb_ical_link != null && !property.airbnb_ical_link.equals("")) {
 		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button> <br>");
 				html.addToHTML("</div>");
-		    }
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    
-		    html.addToHTML("<div class=\"col-md-3\">");
-		    html.addToHTML("<div class='text-center'>");
-		    if (property.wimdu_availablity.size() !=0){
-		    	List sortedList = new ArrayList(property.wimdu_availablity);
-		    	Collections.sort(sortedList);
-		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"<br>");
-		    	html.addToHTML("</div>");
-		    } else {
-		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Wimdu</button> <br>");
-				html.addToHTML("</div>");
-		    }
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    
-		    html.addToHTML("<div class=\"col-md-3\">");
-		    html.addToHTML("<div class='text-center'>");
-		    if (property.holidayletting_availablity.size() !=0){
-		    	List sortedList = new ArrayList(property.holidayletting_availablity);
-		    	Collections.sort(sortedList);
-		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Holiday Letting</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
-		    	html.addToHTML("</div>");
-		    } else {
-		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Holiday Letting</button> ");
-		    	html.addToHTML("</div>");
-		    }
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    
-		    html.addToHTML("<div class=\"col-md-3\">");
-		    html.addToHTML("<div class='text-center'>");
-		    if (property.bookingdotcom_availablity.size() !=0){
-		    	List sortedList = new ArrayList(property.bookingdotcom_availablity);
-		    	Collections.sort(sortedList);
-		    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Booking.com</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
-		    	html.addToHTML("</div>");
-		    } else {
-		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
-		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Booking.com</button> ");
-		    	html.addToHTML("</div>");
-		    }
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-			
-		} else {
-
-			html.addToHTML("<div class=\"col-md-3\">");
-			html.addToHTML("<div class='text-center'>");
-			html.addToHTML("<div class=\"alert alert-success\">");
-			html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button>");
-			html.addToHTML("</div>");
-			html.addToHTML("</div>");
-			html.addToHTML("</div>");
-			
-			html.addToHTML("<div class=\"col-md-3\">");
-			html.addToHTML("<div class='text-center'>");
-			html.addToHTML("<div class=\"alert alert-success\">");
-		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    
-		    html.addToHTML("<div class=\"col-md-3\">");
-		    html.addToHTML("<div class='text-center'>");
-			html.addToHTML("<div class=\"alert alert-success\">");
-		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Holiday Letting</button>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    
-		    html.addToHTML("<div class=\"col-md-3\">");
-		    html.addToHTML("<div class='text-center'>");
-			html.addToHTML("<div class=\"alert alert-success\">");
-		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Booking.com</button>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-		    html.addToHTML("</div>");
-			
-			
 		}
+	    html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+	    
+	    
+	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class='text-center'>");
+	    if (property.wimdu_availablity.size() !=0){
+	    	List sortedList = new ArrayList(property.wimdu_availablity);
+	    	Collections.sort(sortedList);
+	    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Wimdu</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"<br>");
+	    	html.addToHTML("</div>");
+	    } else if ( property.wimdu_ical_link != null && !property.wimdu_ical_link.equals("") ) {
+	    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Wimdu</button> <br>");
+			html.addToHTML("</div>");
+	    }
+	    html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+	    
+	    
+	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class='text-center'>");
+	    if (property.holidayletting_availablity.size() !=0){
+	    	List sortedList = new ArrayList(property.holidayletting_availablity);
+	    	Collections.sort(sortedList);
+	    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Holiday Letting</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
+	    	html.addToHTML("</div>");
+	    } else if (property.holidayletting_name!=null && !property.holidayletting_name.equals("")) {
+	    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Holiday Letting</button> ");
+	    	html.addToHTML("</div>");
+	    }
+	    html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+		    
+	    
+	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class='text-center'>");
+	    if (property.bookingdotcom_availablity.size() !=0){
+	    	List sortedList = new ArrayList(property.bookingdotcom_availablity);
+	    	Collections.sort(sortedList);
+	    	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Booking.com</button> " + sortedList.toString().replace(",", "<br>").replace("[", "<br>").replace("]", "")+"");
+	    	html.addToHTML("</div>");
+	    } else if (property.bookingDotComPropertyId!=null && !property.bookingDotComPropertyId.equals("")){
+	    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
+	    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Booking.com</button> ");
+	    	html.addToHTML("</div>");
+	    }
+	    html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+			
+//		} else {
+//
+//			html.addToHTML("<div class=\"col-md-3\">");
+//			html.addToHTML("<div class='text-center'>");
+//			html.addToHTML("<div class=\"alert alert-success\">");
+//			html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button>");
+//			html.addToHTML("</div>");
+//			html.addToHTML("</div>");
+//			html.addToHTML("</div>");
+//			
+//			html.addToHTML("<div class=\"col-md-3\">");
+//			html.addToHTML("<div class='text-center'>");
+//			html.addToHTML("<div class=\"alert alert-success\">");
+//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//		    
+//		    html.addToHTML("<div class=\"col-md-3\">");
+//		    html.addToHTML("<div class='text-center'>");
+//			html.addToHTML("<div class=\"alert alert-success\">");
+//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Holiday Letting</button>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//		    
+//		    html.addToHTML("<div class=\"col-md-3\">");
+//		    html.addToHTML("<div class='text-center'>");
+//			html.addToHTML("<div class=\"alert alert-success\">");
+//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Booking.com</button>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//		    html.addToHTML("</div>");
+//			
+//			
+//		}
 		
 		html.addToHTML("</tr>");
 		html.addToHTML("</table>");
