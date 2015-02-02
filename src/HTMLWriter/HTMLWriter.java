@@ -55,8 +55,8 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V5.1</h1>";
-		s+= "<p class=\"lead\">Checking Airbnb, Wimdu, Holiday Letting and Booking.com</p>";
+		s+= "<h1>Calendar Sync Checker V5.2 -  Airbnb, Wimdu, Holiday Letting and Booking.com</h1>";
+		s+= "<p class=\"lead\">Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"</p>";
 		s+= "</div>";
 
 		
@@ -66,7 +66,7 @@ public class HTMLWriter {
 	
 	public String getTail(){
 		String s ="      <hr>\n";
-	    s+= "<h5> Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"<h5>\n";
+	    
 		s+="</div> <!-- /container -->";
 		s+="<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css\">";
 		s+="<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css\">";
