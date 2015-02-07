@@ -32,6 +32,7 @@ public class ConflictChecker {
 		
 		Iterator it = clone.iterator();
 //		System.out.println("p:["+ property.holidayletting_name +"]");
+		ArrayList<String> matchedList = new ArrayList<String>();
 		while (it.hasNext()){
 			String s = (String) it.next();
 			if ( (property.airbnb_ical_link == null || property.airbnb_ical_link.equals("") || property.airbnb_availablity.contains(s)) && (property.wimdu_ical_link == null || property.wimdu_ical_link.equals("") || property.wimdu_availablity.contains(s)) && (property.holidayletting_name==null || property.holidayletting_name.equals("") || property.holidayletting_availablity.contains(s)) && (property.bookingDotComPropertyId==null || property.bookingDotComPropertyId.equals("") || property.bookingdotcom_availablity.contains(s))){
@@ -39,6 +40,7 @@ public class ConflictChecker {
 				property.wimdu_availablity.remove(s);
 				property.holidayletting_availablity.remove(s);
 				property.bookingdotcom_availablity.remove(s);
+				matchedList.add(s);
 			} else {
 //				System.out.println(s+":" + Boolean.valueOf(property.airbnb_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.wimdu_availablity.contains(s)).toString() + " "+ Boolean.valueOf(property.holidayletting_name==null).toString() + " "+ Boolean.valueOf(property.holidayletting_name.equals("")).toString() + " "+ Boolean.valueOf(property.holidayletting_availablity.contains(s)).toString());
 			}
@@ -52,17 +54,17 @@ public class ConflictChecker {
 			property.conflict_detected = true;
 		}
 		
-		html.addToHTML("<div class=\"col-md-1\">");
-		html.addToHTML("<div class='text-center'>");
-		html.addToHTML("</div>");
-	    html.addToHTML("</div>");
-		
+//		html.addToHTML("<div class=\"col-md-1\">");
+//		html.addToHTML("<div class='text-center'>");
+//		html.addToHTML("</div>");
+//	    html.addToHTML("</div>");
+//		
 		html.addToHTML("<div class=\"col-md-2\">");
 		html.addToHTML("<div class='text-center'>");
 		html.addToHTML("<div class=\"alert alert-info\" role=\"alert\">");
-		List cloneSortedList = new ArrayList(clone);
-		Collections.sort(cloneSortedList);
-	   	html.addToHTML("<button class=\"btn btn-xs	 btn-info\" type=\"button\">Reserved</button> " + cloneSortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
+		List matchedSortedList = new ArrayList(matchedList);
+		Collections.sort(matchedSortedList);
+	   	html.addToHTML("<button class=\"btn btn-xs	 btn-info\" type=\"button\">Reserved</button> " + matchedSortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
 	   	html.addToHTML("</div>");
 		html.addToHTML("</div>");
 	    html.addToHTML("</div>");
@@ -134,49 +136,7 @@ public class ConflictChecker {
 	    html.addToHTML("</div>");
 	    html.addToHTML("</div>");
 	    
-	    html.addToHTML("<div class=\"col-md-1\">");
-		html.addToHTML("<div class='text-center'>");
-		html.addToHTML("</div>");
-	    html.addToHTML("</div>");
-		
-			
-//		} else {
-//
-//			html.addToHTML("<div class=\"col-md-3\">");
-//			html.addToHTML("<div class='text-center'>");
-//			html.addToHTML("<div class=\"alert alert-success\">");
-//			html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb</button>");
-//			html.addToHTML("</div>");
-//			html.addToHTML("</div>");
-//			html.addToHTML("</div>");
-//			
-//			html.addToHTML("<div class=\"col-md-3\">");
-//			html.addToHTML("<div class='text-center'>");
-//			html.addToHTML("<div class=\"alert alert-success\">");
-//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Wimdu</button>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//		    
-//		    html.addToHTML("<div class=\"col-md-3\">");
-//		    html.addToHTML("<div class='text-center'>");
-//			html.addToHTML("<div class=\"alert alert-success\">");
-//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Holiday Letting</button>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//		    
-//		    html.addToHTML("<div class=\"col-md-3\">");
-//		    html.addToHTML("<div class='text-center'>");
-//			html.addToHTML("<div class=\"alert alert-success\">");
-//		    html.addToHTML("<button class=\"btn btn-xs btn-success\" type=\"button\">Booking.com</button>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//		    html.addToHTML("</div>");
-//			
-//			
-//		}
-		
+	    
 		html.addToHTML("</tr>");
 		html.addToHTML("</table>");
 		
