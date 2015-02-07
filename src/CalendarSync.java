@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.text.html.HTML;
 
@@ -26,6 +27,7 @@ public class CalendarSync {
 		
 //		config.printConfig();
 		while(true){
+			
 			//Scrape Properties
 			System.out.print("Start");
 			for (int i =0; i < config.getPropertyList().size() ; i++){

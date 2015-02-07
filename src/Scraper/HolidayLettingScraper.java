@@ -103,7 +103,7 @@ public class HolidayLettingScraper {
 				p2 = p2.split(">")[0];
 				p2 = p2.replace("\"", "");
 				p2 = p2.trim();
-				if (p2.equals("ab") || p2.equals("ah") || p2.equals("b") || p2.equals("h") || p2.equals("rb"))
+				if (p2.equals("ab") || p2.equals("ah") || p2.equals("b") || p2.equals("h") || p2.equals("rb") || p2.equals("rh") || p2.equals("hb") || p2.equals("bh") )
 					pw.println(p1 + " " + p2);
 			}
 		}
