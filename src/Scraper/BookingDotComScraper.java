@@ -83,18 +83,23 @@ public class BookingDotComScraper {
 		    
 		    Thread.sleep(5000);
 		    
-//		    FileWriter fw = new FileWriter("/tmp/booking.out");
-//		    PrintWriter pw = new PrintWriter(fw);
+		    FileWriter fw = new FileWriter("/tmp/booking.out");
+		    PrintWriter pw = new PrintWriter(fw);
 		    
 		    String[] data = driver.findElement(By.id("calendar")).getAttribute("innerHTML").split("\n");
 		    for (int i =0; i < data.length; i++){
+//		    	pw.println(data[i]);
 		    	if (data[i].contains("closed")){
 		    		property.add_Bookingdotcom_Availablity((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
 		    	}
+		    	if (data[i].contains("fully_booked&quot;:1,")){
+		    		property.add_Bookingdotcom_Availablity((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
+		    		pw.println((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
+		    	}
 		    }
 		    
-//		    pw.close();
-//		    fw.close();
+		    pw.close();
+		    fw.close();
 		    
 		    
 		    driver.quit();

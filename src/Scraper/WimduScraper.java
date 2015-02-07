@@ -33,7 +33,7 @@ public class WimduScraper {
 		this.property = property;
 	}
 	
-	public void scrape() throws MalformedURLException, IOException, ParseException{
+	public void scrape() throws MalformedURLException, IOException, ParseException, InterruptedException{
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.wimdu_ical_link),"/tmp/wimdu.ics");
 //		System.out.println("Downlaod wimdu complete");
@@ -43,14 +43,14 @@ public class WimduScraper {
 //		System.out.println("Wimdu availablity updated");
 	}
 	
-	void downloadFromUrl(URL url, String localFilename) throws IOException {
+	void downloadFromUrl(URL url, String localFilename) throws IOException, InterruptedException {
 		File f = new File(localFilename);
 		if (f.exists()) f.delete();
 		StringBuffer output = new StringBuffer();
 		FileWriter fw = new FileWriter (localFilename);
 		PrintWriter pw = new PrintWriter(fw);
 		Process p;
-		try {
+//		try {
 			p = Runtime.getRuntime().exec("curl " + url.toString());
 			p.waitFor();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -60,9 +60,9 @@ public class WimduScraper {
 			}
 			pw.close();
 			fw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
  	}
 	
 	void loadIcsFile(String file) throws IOException{
