@@ -44,16 +44,31 @@ public class ConflictChecker {
 			}
 		}
 		
-		  html.addToHTML("<table class=\"table\">");
-		  html.addToHTML("	<div class=\"row\">");
+		
+		html.addToHTML("<table class=\"table\">");
+		html.addToHTML("	<div class=\"row\">");
 
 		if (property.airbnb_availablity.size() != 0 || property.wimdu_availablity.size() !=0 || property.holidayletting_availablity.size()!=0  || property.bookingdotcom_availablity.size() != 0){
 			property.conflict_detected = true;
 		}
-
-		html.addToHTML("<div class=\"col-md-3\">");
-		html.addToHTML("<div class='text-center'>");
 		
+		html.addToHTML("<div class=\"col-md-1\">");
+		html.addToHTML("<div class='text-center'>");
+		html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+		
+		html.addToHTML("<div class=\"col-md-2\">");
+		html.addToHTML("<div class='text-center'>");
+		html.addToHTML("<div class=\"alert alert-info\" role=\"alert\">");
+		List cloneSortedList = new ArrayList(clone);
+		Collections.sort(cloneSortedList);
+	   	html.addToHTML("<button class=\"btn btn-xs	 btn-info\" type=\"button\">Reserved</button> " + cloneSortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
+	   	html.addToHTML("</div>");
+		html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+
+		html.addToHTML("<div class=\"col-md-2\">");
+		html.addToHTML("<div class='text-center'>");
 		if (property.airbnb_availablity.size() != 0){
 		   	List sortedList = new ArrayList(property.airbnb_availablity);
 		   	Collections.sort(sortedList);
@@ -69,7 +84,7 @@ public class ConflictChecker {
 	    html.addToHTML("</div>");
 	    
 	    
-	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class=\"col-md-2\">");
 	    html.addToHTML("<div class='text-center'>");
 	    if (property.wimdu_availablity.size() !=0){
 	    	List sortedList = new ArrayList(property.wimdu_availablity);
@@ -86,7 +101,7 @@ public class ConflictChecker {
 	    html.addToHTML("</div>");
 	    
 	    
-	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class=\"col-md-2\">");
 	    html.addToHTML("<div class='text-center'>");
 	    if (property.holidayletting_availablity.size() !=0){
 	    	List sortedList = new ArrayList(property.holidayletting_availablity);
@@ -103,7 +118,7 @@ public class ConflictChecker {
 	    html.addToHTML("</div>");
 		    
 	    
-	    html.addToHTML("<div class=\"col-md-3\">");
+	    html.addToHTML("<div class=\"col-md-2\">");
 	    html.addToHTML("<div class='text-center'>");
 	    if (property.bookingdotcom_availablity.size() !=0){
 	    	List sortedList = new ArrayList(property.bookingdotcom_availablity);
@@ -118,6 +133,12 @@ public class ConflictChecker {
 	    }
 	    html.addToHTML("</div>");
 	    html.addToHTML("</div>");
+	    
+	    html.addToHTML("<div class=\"col-md-1\">");
+		html.addToHTML("<div class='text-center'>");
+		html.addToHTML("</div>");
+	    html.addToHTML("</div>");
+		
 			
 //		} else {
 //
