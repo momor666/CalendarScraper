@@ -67,7 +67,7 @@ public class BookingDotComScraper {
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		    driver.get(baseUrl + "/hotel/hoteladmin/");
 		    driver.findElement(By.id("loginname")).clear();
-		    driver.findElement(By.id("loginname")).sendKeys("1280132");
+		    driver.findElement(By.id("loginname")).sendKeys(property.bookingDotComPropertyId);
 		    driver.findElement(By.id("password")).clear();
 		    driver.findElement(By.id("password")).sendKeys("samiul123");
 		    driver.findElement(By.name("login")).click();
