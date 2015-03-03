@@ -11,12 +11,14 @@ public class PropertyStructure {
 	public String holidayletting_name;
 	public String bookingDotComPropertyId;
 	public boolean conflict_detected = false;
+	public String airbnb_ihk_ical_link;
 	
 	public HashSet<String> airbnb_availablity = new HashSet<String>();
 	public HashSet<String> wimdu_availablity = new HashSet<String>();
 	public HashSet<String> holidayletting_availablity = new HashSet<String>();
 	public HashSet<String> bookingdotcom_availablity = new HashSet<String>();
-	
+	public HashSet<String> airbnb_ihk_availability = new HashSet<String>();
+ 	
 	
 	public PropertyStructure() {
 	}
@@ -39,6 +41,10 @@ public class PropertyStructure {
 	
 	public void add_Bookingdotcom_Availablity(String date){
 		this.bookingdotcom_availablity.add(date);
+	}
+	
+	public void add_Airbnb_ihk_Availability(String date){
+		this.airbnb_ihk_availability.add(date);
 	}
 	
 }

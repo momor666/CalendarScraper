@@ -9,6 +9,7 @@ import ConflictChecker.ConflictChecker;
 import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
 import Scraper.AirbnbScraper;
+import Scraper.AirbnbScraper2;
 import Scraper.BookingDotComScraper;
 import Scraper.HolidayLettingScraper;
 import Scraper.WimduScraper;
@@ -34,24 +35,36 @@ public class CalendarSync {
 			
 				System.out.print(" " + (i+1));
 				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");
-				//scrape Airbnb
+
+				//scrape Airbnb_Sam
+				System.out.print("A");
 				AirbnbScraper airbnb = new AirbnbScraper(config.getPropertyList().get(i));
 				airbnb.scrape();
-				System.out.print("A");
+				
 				//scrape wimdu
+				System.out.print("W");
 				WimduScraper wimdu = new WimduScraper(config.getPropertyList().get(i));
 				wimdu.scrape();
-				System.out.print("W");
-//				System.out.println(config.getPropertyList().get(i).wimdu_availablity.size());
+				
 				
 				//scrape holidayletting
+				System.out.print("H");
 				HolidayLettingScraper holiday = new HolidayLettingScraper(config.getPropertyList().get(i));
 				holiday.scrape();
-				System.out.print("H");
+				
+				
 				//Booking.com Scraper
+				System.out.print("B");
 				BookingDotComScraper bookingdotcom = new BookingDotComScraper(config.getPropertyList().get(i));
 				bookingdotcom.scrape();
-				System.out.print("B");
+				
+				
+				//scrape Airbnb_IHK
+				System.out.print("A2");
+				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
+				airbnb2.scrape();
+				
+				
 				//Checking for conflicts.
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
