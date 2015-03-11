@@ -29,6 +29,7 @@ public class ConfigurationUtil {
 				property.holidayletting_name = properties.getProperty("p"+(i+1)+"_holidayletting_name");
 				property.bookingDotComPropertyId = properties.getProperty("p"+(i+1)+"_bookingdotcom_id");
 				property.airbnb_ihk_ical_link = properties.getProperty("p"+(i+1)+"_airbnb_ihk_ical_link");
+				property.airbnb_sar_ical_link = properties.getProperty("p"+(i+1)+"_airbnb_sar_ical_link");
 				propertyList.add(property);
 			}
 			

@@ -10,6 +10,7 @@ import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
 import Scraper.AirbnbScraper;
 import Scraper.AirbnbScraper2;
+import Scraper.AirbnbScraper3;
 import Scraper.BookingDotComScraper;
 import Scraper.HolidayLettingScraper;
 import Scraper.WimduScraper;
@@ -32,15 +33,13 @@ public class CalendarSync {
 			//Scrape Properties
 			System.out.print("Start");
 			for (int i =0; i < config.getPropertyList().size() ; i++){
+//				if (i != 2) continue;
 			
 				System.out.print(" " + (i+1));
 				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");
 
 				
-				//scrape Airbnb_IHK
-				System.out.print("A2");
-				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
-				airbnb2.scrape();
+				
 				
 				//scrape Airbnb_Sam
 				System.out.print("A");
@@ -65,6 +64,16 @@ public class CalendarSync {
 				bookingdotcom.scrape();
 				
 				
+				//scrape Airbnb_IHK
+				System.out.print("A2");
+				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
+				airbnb2.scrape();
+				
+			
+				//scrape Airbnb_SAR
+				System.out.print("A3");
+				AirbnbScraper3 airbnb3 = new AirbnbScraper3(config.getPropertyList().get(i));
+				airbnb3.scrape();
 				
 				
 				
@@ -72,7 +81,8 @@ public class CalendarSync {
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
 				
-//				break;
+				
+				
 				
 			}
 //			System.exit(0);
