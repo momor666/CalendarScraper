@@ -36,6 +36,12 @@ public class CalendarSync {
 				System.out.print(" " + (i+1));
 				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");
 
+				
+				//scrape Airbnb_IHK
+				System.out.print("A2");
+				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
+				airbnb2.scrape();
+				
 				//scrape Airbnb_Sam
 				System.out.print("A");
 				AirbnbScraper airbnb = new AirbnbScraper(config.getPropertyList().get(i));
@@ -59,15 +65,14 @@ public class CalendarSync {
 				bookingdotcom.scrape();
 				
 				
-				//scrape Airbnb_IHK
-				System.out.print("A2");
-				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
-				airbnb2.scrape();
+				
 				
 				
 				//Checking for conflicts.
 				ConflictChecker conflictchecker = new ConflictChecker(config.getPropertyList().get(i),html);
 				conflictchecker.checkConflicts();	
+				
+//				break;
 				
 			}
 //			System.exit(0);

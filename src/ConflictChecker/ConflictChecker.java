@@ -95,7 +95,7 @@ public class ConflictChecker {
 		   	html.addToHTML("<div class=\"alert alert-danger\" role=\"alert\">");
 		   	html.addToHTML("<button class=\"btn btn-xs	 btn-danger\" type=\"button\">Airbnb_IHK</button> " + sortedList.toString().toString().replace(",", "<br>").replace("[", "<br>").replace("]", "") +"<br>");
 		   	html.addToHTML("</div>");
-		} else if (property.airbnb_ihk_availability != null && !property.airbnb_ihk_availability.equals("")) {
+		} else if (property.airbnb_ihk_availability != null && !property.airbnb_ihk_ical_link.equals("")) {
 		    	html.addToHTML("<div class=\"alert alert-success\" role=\"alert\">");
 		    	html.addToHTML("<button class=\"btn btn-xs	 btn-success\" type=\"button\">Airbnb_IHK</button> <br>");
 				html.addToHTML("</div>");

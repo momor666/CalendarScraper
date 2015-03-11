@@ -35,6 +35,8 @@ public class AirbnbScraper2 {
 		if (property.airbnb_ihk_ical_link == null || property.airbnb_ihk_ical_link.equals(""))
 			return;
 		
+//		System.out.println("does not get here");
+		
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.airbnb_ihk_ical_link),"/tmp/airbnb2.ics");
 //		System.out.println("Downlaod airbnb complete");
