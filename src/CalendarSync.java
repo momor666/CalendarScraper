@@ -28,10 +28,10 @@ public class CalendarSync {
 		
 		
 //		config.printConfig();
-		while(true){
+//		while(true){
 			
 			//Scrape Properties
-			System.out.print("Start");
+			System.out.print("S");
 			for (int i =0; i < config.getPropertyList().size() ; i++){
 //				if (i != 2) continue;
 			
@@ -65,13 +65,13 @@ public class CalendarSync {
 				
 				
 				//scrape Airbnb_IHK
-				System.out.print("A2");
+				System.out.print("A");
 				AirbnbScraper2 airbnb2 = new AirbnbScraper2(config.getPropertyList().get(i));
 				airbnb2.scrape();
 				
 			
 				//scrape Airbnb_SAR
-				System.out.print("A3");
+				System.out.print("A");
 				AirbnbScraper3 airbnb3 = new AirbnbScraper3(config.getPropertyList().get(i));
 				airbnb3.scrape();
 				
@@ -88,11 +88,11 @@ public class CalendarSync {
 //			System.exit(0);
 			//Output HTML
 			html.writeHTMLFile(config.getHtml_output_file(),config);
-			System.out.println(" Waiting");
+			System.out.println(" W");
 			
-			Thread.sleep(60000);
+//			Thread.sleep(60000);
 //			break;
-		}
+//		}
 //	} catch (Exception e){
 //		e.printStackTrace();
 //	}
