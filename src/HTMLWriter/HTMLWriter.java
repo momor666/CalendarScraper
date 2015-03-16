@@ -55,7 +55,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V11.1</h1>";
+		s+= "<h1>Calendar Sync Checker V12.1</h1>";
 		s+= "<p class=\"lead\">Airbnb, Wimdu, Holiday Letting and Booking.com<br>";
 		s+= "Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"</p>";
 		s+= "</div>";
@@ -107,16 +107,43 @@ public class HTMLWriter {
 		pw.close();
 		fw.close();
 		
-		if (SendMailTLS.email_enabled && message.contains("danger")){
+		if (!isEmailDisabled() && message.contains("danger")){
 			SendMailTLS.sendMail("Calendars out of Sync!");
-			SendMailTLS.email_enabled = false;
+//			SendMailTLS.email_enabled = false;
+			disableEmail(true);
 		} 
-		if(!message.contains("danger") && !SendMailTLS.email_enabled){
+		if(!message.contains("danger") && isEmailDisabled()){
 			SendMailTLS.sendMail("Calendars Synced");
-			SendMailTLS.email_enabled = true;
+			disableEmail(false);
 		}
 		
 		message="";  
+	}
+	
+	
+	private boolean isEmailDisabled(){
+		File f = new File("/tmp/email.disabled");
+		if (f.exists())
+			return true;
+		else 
+			return false;
+	}
+	
+	private void disableEmail(boolean status){
+		File f = new File("/tmp/email.disabled");
+		if (status){
+			try {
+				FileWriter fw = new FileWriter (f);
+				fw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			f.delete();
+		}
+		
+		
 	}
 	
 }
