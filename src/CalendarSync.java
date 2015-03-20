@@ -33,7 +33,7 @@ public class CalendarSync {
 			//Scrape Properties
 			System.out.print("S");
 			for (int i =0; i < config.getPropertyList().size() ; i++){
-//				if (i != 2) continue;
+//				if (i != 4) continue;
 			
 				System.out.print(" " + (i+1));
 				html.addToHTML("<h4> Property " + (i+1) +": " + config.getPropertyList().get(i).airbnb_name +"</h4>");

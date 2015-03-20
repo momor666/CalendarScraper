@@ -72,7 +72,8 @@ public class ConfigurationUtil {
 			properties.load(is);
 			is.close();
 		} catch (IOException io) {
-			properties = null;
+			io.printStackTrace();
+			System.exit(0);
 		}
 		return properties;
 	}

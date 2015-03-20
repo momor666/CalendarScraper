@@ -88,8 +88,7 @@ public class BookingDotComScraper {
 		    
 		    String[] data = driver.findElement(By.id("calendar")).getAttribute("innerHTML").split("\n");
 		    for (int i =0; i < data.length; i++){
-//		    	pw.println(data[i]);
-		    	if (data[i].contains("closed")){
+		    	if (data[i].contains("closed") || data[i].contains("soldout")){
 		    		property.add_Bookingdotcom_Availablity((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
 		    	}
 		    	if (data[i].contains("fully_booked&quot;:1,")){
