@@ -1,6 +1,9 @@
 package HTMLWriter;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,7 +58,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V13.1</h1>";
+		s+= "<h1>Calendar Sync Checker V14.0</h1>";
 		s+= "<p class=\"lead\">Airbnb, Wimdu, Holiday Letting and Booking.com<br>";
 		s+= "Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"</p>";
 		s+= "</div>";
@@ -107,42 +110,73 @@ public class HTMLWriter {
 		pw.close();
 		fw.close();
 		
-		if (!isEmailDisabled() && message.contains("danger")){
-			SendMailTLS.sendMail("Calendars out of Sync!");
-//			SendMailTLS.email_enabled = false;
-			disableEmail(true);
-		} 
-		if(!message.contains("danger") && isEmailDisabled()){
-			SendMailTLS.sendMail("Calendars Synced");
-			disableEmail(false);
+//		if (!isEmailDisabled() && message.contains("danger")){
+//			SendMailTLS.sendMail("Calendars out of Sync!");
+////			SendMailTLS.email_enabled = false;
+//			disableEmail(true);
+//		} 
+//		if(!message.contains("danger") && isEmailDisabled()){
+//			SendMailTLS.sendMail("Calendars Synced");
+//			disableEmail(false);
+//		}
+		
+		
+		if (syncChaned()){
+			SendMailTLS.sendMail("Calendar Sync Changed");
+			writeNewSyncCount();
 		}
 		
 		message="";  
 	}
 	
 	
-	private boolean isEmailDisabled(){
-		File f = new File("/tmp/email.disabled");
-		if (f.exists())
-			return true;
-		else 
-			return false;
-	}
-	
-	private void disableEmail(boolean status){
-		File f = new File("/tmp/email.disabled");
-		if (status){
-			try {
-				FileWriter fw = new FileWriter (f);
-				fw.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	private boolean syncChaned() throws IOException{
+		
+		String [] tmp = message.split(" ");
+		int newCount =0;
+		for (int i =0; i < tmp.length; i++){
+			if (tmp[i].contains("danger")){
+				newCount++;
 			}
-		} else {
-			f.delete();
 		}
 		
+		File f = new File("/tmp/sync.count");
+		int existingCount = 0; 
+				
+		if (f.exists()){
+			FileReader fr = new FileReader (f);
+			BufferedReader br = new BufferedReader (fr);
+			String input = ""; 
+			input = br.readLine();
+			existingCount = Integer.parseInt(input);
+			br.close();
+			fr.close();
+			if (newCount == existingCount)
+				return false;
+			else 
+				return true;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	private void writeNewSyncCount() throws IOException{
+		FileWriter fw = new FileWriter("/tmp/sync.count");
+		PrintWriter pw = new PrintWriter(fw);
+		
+		String [] tmp = message.split(" ");
+		int newCount =0;
+		for (int i =0; i < tmp.length; i++){
+			if (tmp[i].contains("danger")){
+				newCount++;
+			}
+		}
+		
+		pw.println(newCount);
+		
+		pw.close();
+		fw.close();
 		
 	}
 	
