@@ -32,6 +32,9 @@ public class AirbnbScraper {
 	}
 	
 	public void scrape() throws MalformedURLException, IOException, ParseException{
+		if (property.airbnb_ical_link == null || property.airbnb_ical_link.equals(""))
+			return;
+		
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.airbnb_ical_link),"/tmp/airbnb.ics");
 //		System.out.println("Downlaod airbnb complete");

@@ -34,6 +34,10 @@ public class WimduScraper {
 	}
 	
 	public void scrape() throws MalformedURLException, IOException, ParseException, InterruptedException{
+		
+		if (property.wimdu_ical_link == null || property.wimdu_ical_link.equals(""))
+			return;
+		
 		//download calendar from airbnb
 		downloadFromUrl(new URL(property.wimdu_ical_link),"/tmp/wimdu.ics");
 //		System.out.println("Downlaod wimdu complete");
