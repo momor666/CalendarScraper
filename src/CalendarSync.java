@@ -8,6 +8,7 @@ import javax.swing.text.html.HTML;
 import ConflictChecker.ConflictChecker;
 import Email.SendMailTLS;
 import HTMLWriter.HTMLWriter;
+import IgnoreListProcessor.ProcessIgnoreList;
 import Scraper.AirbnbScraper;
 import Scraper.AirbnbScraper2;
 import Scraper.AirbnbScraper3;
@@ -75,6 +76,11 @@ public class CalendarSync {
 				AirbnbScraper3 airbnb3 = new AirbnbScraper3(config.getPropertyList().get(i));
 				airbnb3.scrape();
 				
+				
+				//Process Ignore List
+				
+				ProcessIgnoreList pl = new ProcessIgnoreList();
+				pl.processIgnoreList(config.getPropertyList().get(i), i+1);
 				
 				
 				//Checking for conflicts.
