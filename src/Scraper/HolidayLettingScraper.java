@@ -65,13 +65,19 @@ public class HolidayLettingScraper {
 			String baseUrl = "https://www.holidaylettings.co.uk/";
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		    driver.get(baseUrl + "/");
+		    
+		    driver.get(baseUrl + "/content/homepage/home");
 		    driver.findElement(By.xpath("(//a[contains(text(),'Owner login')])[2]")).click();
 		    driver.findElement(By.id("ownerId")).clear();
 		    driver.findElement(By.id("ownerId")).sendKeys("samiulali@hotmail.com");
 		    driver.findElement(By.id("ownerPassword")).clear();
 		    driver.findElement(By.id("ownerPassword")).sendKeys("samiul123");
 		    driver.findElement(By.xpath("//div[@id='ownerLoginForm']/button")).click();
+		    Thread.sleep(5000);
+		    driver.findElement(By.linkText("Properties")).click();
+		    Thread.sleep(1000);
 		    driver.findElement(By.linkText("Update calendar")).click();
+		    
 		    driver.findElement(By.id("calendarContainer"));
 		    int randomtry = new Random().nextInt((10 - 5) + 1) + 5;
 		    for (int i =0; i <randomtry; i++){
