@@ -10,6 +10,7 @@ public class PropertyStructure {
 	public String wimdu_ical_link;
 	public String holidayletting_name;
 	public String bookingDotComPropertyId;
+	public String bookingDotComPropertyName;
 	public boolean conflict_detected = false;
 	public String airbnb_ihk_ical_link;
 	public String airbnb_sar_ical_link;

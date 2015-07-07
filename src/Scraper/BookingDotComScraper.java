@@ -76,6 +76,9 @@ public class BookingDotComScraper {
 		    Thread.sleep(5000);
 		    driver.findElement(By.xpath("//div[@id='content_wrapper']/nav/ul/li[2]/a")).click();
 		    
+		    Thread.sleep(5000);
+		    driver.findElement(By.linkText(property.bookingDotComPropertyName)).click();
+		    
 		    for (int i =0; i < 15; i ++){
 		    	Thread.sleep(3000);
 			    driver.findElement(By.xpath("//div[@id='mini-calendars']/a[2]/span")).click();	
