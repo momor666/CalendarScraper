@@ -95,10 +95,13 @@ public class BookingDotComScraper {
 		    for (int i =0; i < data.length; i++){
 		    	if (data[i].contains("closed") || data[i].contains("soldout")){
 		    		property.add_Bookingdotcom_Availablity((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
+		    		pw.println((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
+		    		System.out.println((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
 		    	}
 		    	if (data[i].contains("fully_booked&quot;:1,")){
 		    		property.add_Bookingdotcom_Availablity((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
 		    		pw.println((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
+		    		System.out.println((data[i].substring(data[i].indexOf("date-") + 5, data[i].indexOf("date-") + 15)));
 		    	}
 		    }
 		    

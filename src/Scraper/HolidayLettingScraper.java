@@ -132,6 +132,7 @@ public class HolidayLettingScraper {
 			DateTime date = new DateTime(d);
 			if (!(date.plusDays(1)).isBefore(System.currentTimeMillis())){
 				property.add_HolidayLetting_Availablity(date.toString().split("T")[0]);
+				System.out.println(date.toString().split("T")[0]);
 			}
 		}
 		br.close();
