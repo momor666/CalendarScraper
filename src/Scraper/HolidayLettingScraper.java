@@ -48,18 +48,18 @@ public class HolidayLettingScraper {
 			ProfilesIni profilesIni = new ProfilesIni();
 			FirefoxProfile profile = profilesIni.getProfile("default");
 			profile.setAssumeUntrustedCertificateIssuer(false);
-			final File firefoxPath = new File(System.getProperty(
-	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
-
-			if (firefoxPath.exists()){
-				String Xport = System.getProperty(
-		                "lmportal.xvfb.id", ":1");
-		        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
-		        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
-		        this.driver =  new FirefoxDriver(firefoxBinary, profile);
-			} else{
+//			final File firefoxPath = new File(System.getProperty(
+//	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
+//
+//			if (firefoxPath.exists()){
+//				String Xport = System.getProperty(
+//		                "lmportal.xvfb.id", ":1");
+//		        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
+//		        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
+//		        this.driver =  new FirefoxDriver(firefoxBinary, profile);
+//			} else{
 				this.driver =  new FirefoxDriver(profile);	
-			}
+//			}
 			
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://www.holidaylettings.co.uk/";

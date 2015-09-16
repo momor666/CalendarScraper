@@ -49,18 +49,18 @@ public class BookingDotComScraper {
 			ProfilesIni profilesIni = new ProfilesIni();
 			FirefoxProfile profile = profilesIni.getProfile("default");
 			profile.setAssumeUntrustedCertificateIssuer(false);
-			final File firefoxPath = new File(System.getProperty(
-	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
-
-			if (firefoxPath.exists()){
-				String Xport = System.getProperty(
-		                "lmportal.xvfb.id", ":1");
-		        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
-		        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
-		        this.driver =  new FirefoxDriver(firefoxBinary, profile);
-			} else{
+//			final File firefoxPath = new File(System.getProperty(
+//	                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
+//
+//			if (firefoxPath.exists()){
+//				String Xport = System.getProperty(
+//		                "lmportal.xvfb.id", ":1");
+//		        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
+//		        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
+//		        this.driver =  new FirefoxDriver(firefoxBinary, profile);
+//			} else{
 				this.driver =  new FirefoxDriver(profile);	
-			}
+//			}
 			
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://admin.booking.com/";
@@ -79,9 +79,11 @@ public class BookingDotComScraper {
 		    Thread.sleep(5000);
 		    driver.findElement(By.linkText(property.bookingDotComPropertyName)).click();
 		    
+		    Thread.sleep(5000);
+		    
 		    for (int i =0; i < 15; i ++){
 		    	Thread.sleep(3000);
-			    driver.findElement(By.xpath("//div[@id='mini-calendars']/a[2]/span")).click();	
+			    driver.findElement(By.xpath("//div[@id='mini-calendars']/a[2]/span")).click();
 		    }
 		    
 		    Thread.sleep(5000);
