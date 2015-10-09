@@ -58,7 +58,7 @@ public class HTMLWriter {
 		s+= "<body>\n";
 		s+= "<div class=\"container\">";
 		s+= "<div class=\"page-header\">";
-		s+= "<h1>Calendar Sync Checker V19.0</h1>";
+		s+= "<h1>Calendar Sync Checker V20.0</h1>";
 		s+= "<p class=\"lead\">Airbnb, Wimdu, Holiday Letting and Booking.com<br>";
 		s+= "Last sync: " + LocalDateTime.now().toString().split("T")[0] + " " +LocalDateTime.now().toString().split("T")[1]+"</p>";
 		s+= "</div>";

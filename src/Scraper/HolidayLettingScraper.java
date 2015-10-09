@@ -66,8 +66,8 @@ public class HolidayLettingScraper {
 		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		    driver.get(baseUrl + "/");
 		    
-		    driver.get(baseUrl + "/content/homepage/home");
-		    driver.findElement(By.xpath("(//a[contains(text(),'Owner login')])[2]")).click();
+		    driver.get(baseUrl + "content/login");
+//		    driver.findElement(By.xpath("(//a[contains(text(),'Owner login')])[2]")).click();
 		    driver.findElement(By.id("ownerId")).clear();
 		    driver.findElement(By.id("ownerId")).sendKeys("samiulali@hotmail.com");
 		    driver.findElement(By.id("ownerPassword")).clear();
