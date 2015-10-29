@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.joda.time.DateTime;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -69,8 +70,10 @@ public class BookingDotComScraper {
 		    driver.findElement(By.id("loginname")).clear();
 		    driver.findElement(By.id("loginname")).sendKeys(property.bookingDotComPropertyId);
 		    driver.findElement(By.id("password")).clear();
-		    driver.findElement(By.id("password")).sendKeys("samiul123");
-		    driver.findElement(By.name("login")).click();
+		    driver.findElement(By.id("password")).sendKeys("samiul123", Keys.ENTER);
+//		    driver.findElement(By.id("elementid")).sendKeys();
+
+//		    driver.findElement(By.name("login")).click();
 		       
 		    
 		    Thread.sleep(5000);
