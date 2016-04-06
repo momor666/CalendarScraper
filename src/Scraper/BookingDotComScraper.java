@@ -65,22 +65,27 @@ public class BookingDotComScraper {
 			
 	//		this.driver = new HtmlUnitDriver();
 			String baseUrl = "https://admin.booking.com/";
-		    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		    driver.get(baseUrl + "/hotel/hoteladmin/");
 		    driver.findElement(By.id("loginname")).clear();
 		    driver.findElement(By.id("loginname")).sendKeys(property.bookingDotComPropertyId);
 		    driver.findElement(By.id("password")).clear();
-		    driver.findElement(By.id("password")).sendKeys("samiul123", Keys.ENTER);
+		    driver.findElement(By.id("password")).sendKeys("samiul098", Keys.ENTER);
 //		    driver.findElement(By.id("elementid")).sendKeys();
 
 //		    driver.findElement(By.name("login")).click();
 		       
 		    
 		    Thread.sleep(5000);
-		    driver.findElement(By.xpath("//div[@id='content_wrapper']/nav/ul/li[2]/a")).click();
+		    driver.findElement(By.cssSelector("li.active.selected  > a")).click();
 		    
 		    Thread.sleep(5000);
-		    driver.findElement(By.linkText(property.bookingDotComPropertyName)).click();
+		    
+		    driver.findElement(By.xpath("//li[2]/a")).click();
+    
+		    Thread.sleep(5000);
+
+		    driver.findElement(By.linkText("Apartment")).click();
 		    
 		    Thread.sleep(5000);
 		    
