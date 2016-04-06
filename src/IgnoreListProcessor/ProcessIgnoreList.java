@@ -49,7 +49,8 @@ public class ProcessIgnoreList {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+//			System.out.println("Ignore List not available.");
 		}
 		
 		
